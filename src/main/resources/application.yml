@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: zuul-service
+  datasource:
+    driver-class-name:  com.mysql.jdbc.Driver
+    url: jdbc:mysql://114.113.151.147:8066/svdm?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: hg765JHG765jhgjgh876JHG76uyg56F76Ruygt97t6r566ef
+  jmx:
+    default-domain: zuul
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://114.113.151.147:8761/eureka/
+    healthcheck:
+      enabled: true
+    registry-fetch-interval-seconds: 30 #拉取服务注册信息时间
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 15 #续约更新频率
+    lease-expiration-duration-in-seconds: 45  #过期剔除时间
+feign:
+  hystrix:
+    enabled: true
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 300000  #超时时间
+service:
+  unit-url: http://114.113.151.147:8888/unit-service
+  count-url: http://114.113.151.147:8888/count-service
+  risk-url: http://114.113.151.147:8888/risk-service
+  suggest-url: http://114.113.151.147:8888/rectification-suggest-service
+  results-url: http://114.113.151.147:8888/analysis-results-service
+#  results-url: http://192.168.1.24:8555
+

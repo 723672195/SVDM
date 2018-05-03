@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: config-server   # 对应config server所获取的配置文件的{application}
+  cloud:
+    config:
+      uri: http://114.113.151.147:8080/
+      profile: application           # profile对应config server所获取的配置文件中的{profile}
+      label: master           # 指定Git仓库的分支，对应config server所获取的配置文件的{label}
+      discovery:
+        enabled: true
+        service-id: config-server
+  rabbitmq:
+    host: 114.113.151.144
+    port: 5672
+    username: admin
+    password: admin
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://114.113.151.147:8761/eureka/
+    healthcheck:
+      enabled: true
+    registry-fetch-interval-seconds: 30 #拉取服务注册信息时间
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 15 #续约更新频率
+    lease-expiration-duration-in-seconds: 45  #过期剔除时间
