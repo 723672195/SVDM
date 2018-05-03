@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: config-server   # 对应config server所获取的配置文件的{application}
+  cloud:
+    config:
+      uri: http://192.168.1.23:8080/
+      profile: application           # profile对应config server所获取的配置文件中的{profile}
+      label: master           # 指定Git仓库的分支，对应config server所获取的配置文件的{label}
+      discovery:
+        enabled: true
+        service-id: config-server
+  rabbitmq:
+    host: 192.168.1.23
+    port: 5672
+    username: admin
+    password: admin
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.1.23:8761/eureka/
